@@ -1,4 +1,4 @@
-let todoList = [];
+let todoList = JSON.parse(localStorage.getItem('todos')) || [];
 renderTodoList();
 
 function renderTodoList() {
@@ -30,12 +30,16 @@ function addTodo() {
     }
     todoList.push(name);
     inputElement.value = '';
+
+    localStorage.setItem('todos', JSON.stringify(todoList));
+
     renderTodoList();
 }
 
 
 function deleteTodo(index) {
     todoList.splice(index, 1); 
+    localStorage.setItem('todos', JSON.stringify(todoList));
     renderTodoList(); 
 }
 
@@ -52,9 +56,6 @@ function checkComplete(index) {
     }
 }   
 
-function filterTodo() {
-        
-}
 
 function handleCostKeydown(event) { 
     if (event.key === 'Enter') {
