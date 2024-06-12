@@ -3,19 +3,22 @@ renderTodoList();
 
 function renderTodoList() {
     let todoListHTML = '';
-    for (let i = 0; i < todoList.length; i++) {
-        let temp = todoList[i];
+
+    todoList.forEach(function(todoObject, index) {
+    // for (let i = 0; i < todoList.length; i++) 
+        const name = todoObject;
+
         let tempHTML = `
         <div class="todo-content">
             <label>
-                <input class="todo-cb" type="checkbox" onclick="checkComplete(${i});">${temp}
+                <input class="todo-cb" type="checkbox" onclick="checkComplete(${index});">${name}
             </label>
-            <button class="remove-button" onclick="deleteTodo(${i})">
+            <button class="remove-button" onclick="deleteTodo(${index})">
                 <img class="bin-icon" src="images/bin.png">
             </button>
         </div>`;
         todoListHTML += tempHTML;   
-    }
+    });
     document.querySelector('.todo-list').innerHTML = todoListHTML;
 }
 
