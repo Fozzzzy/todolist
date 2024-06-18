@@ -33,11 +33,14 @@ header {
     flex-wrap: wrap;
     flex-direction: column;
 
+    margin-block: 20px;
+    margin-inline: 50px;
     backdrop-filter: blur(10px);
     background: transparent;
     min-width: 45vw;
     min-height: 80svh;
     padding: 30px;
+    
 
     border: none solid rgb(0, 0, 0);
     gap: 1rem;
@@ -47,7 +50,7 @@ header {
 
 .form {
     display: grid;
-    grid-template-columns: 7fr 1fr;
+    grid-template-columns: 6.8fr 1fr;
     min-width: 60px;
     align-items: center;
 }
@@ -60,13 +63,14 @@ header {
 }
 
 input {
-    accent-color: red;
+    accent-color: rgb(255, 0, 0);
 }
 
 .form input {
     min-height: 45px;
     margin-right: 4px;
-    padding: 5px 18rem 5px 15px;
+    min-width: 17rem;
+    padding: 5px 1rem 5px 15px;
     backdrop-filter: blur(50px);
     position: relative;
     background-color: rgb(234,235,236);
@@ -163,6 +167,7 @@ label {
     padding: 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 4px;
+    transition: all 0.5s ease-in-out;
 }
 
 label .todo-cb {
@@ -197,4 +202,8 @@ label .todo-cb {
 
 .completed {
     text-decoration: line-through;
+}
+
+.completed label{
+    background-color: rgba(219, 219, 219, 0.432);
 }

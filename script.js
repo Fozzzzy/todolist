@@ -1,10 +1,11 @@
 let todoList = JSON.parse(localStorage.getItem('todos')) || [];
+
 renderTodoList();
 
 function renderTodoList() {
     let todoListHTML = '';
 
-    todoList.forEach(function(todoObject, index) {
+    todoList.forEach((todoObject, index) => {
     // for (let i = 0; i < todoList.length; i++) 
         const name = todoObject;
 
@@ -22,14 +23,17 @@ function renderTodoList() {
     document.querySelector('.todo-list').innerHTML = todoListHTML;
 }
 
+const buttonElement = document.querySelector('.todo-button');
+const inputElement = document.querySelector(".todo-input");
+
+buttonElement.addEventListener('click', addTodo);
+
 function addTodo() {
-    const inputElement = document.querySelector(".todo-input");
     let name = inputElement.value;
 
-
     if (name === '' || name === undefined) {
-        alert("Please enter a task")
-        return                              // return to exit function
+        alert("Please enter a task");
+        return;                              // return to exit function
     }
     todoList.push(name);
     inputElement.value = '';
@@ -38,7 +42,6 @@ function addTodo() {
 
     renderTodoList();
 }
-
 
 function deleteTodo(index) {
     todoList.splice(index, 1); 
@@ -53,15 +56,22 @@ function checkComplete(index) {
     
     if (checkbox.checked) {
         todoItem.classList.add('completed');
+        label.classList.add('completed');
+
     } else {
         todoItem.classList.remove('completed');
-        todoItem.classList.add('incomplete');
+        label.classList.remove('completed');
     }
 }   
 
+// function handleCostKeydown(event) { 
+//     if (event.key === 'Enter') {
+//         addTodo();
+//     }
+// }
 
-function handleCostKeydown(event) { 
+inputElement.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         addTodo();
     }
-}
+});
